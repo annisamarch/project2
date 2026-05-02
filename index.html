@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>for Kak Tomo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #92A8D1 0%, #B1C4E8 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            color: #333;
+        }
+
+        .main-content {
+            text-align: center;
+            z-index: 1;
+        }
+
+        .title {
+            font-weight: 600;
+            font-size: 1.8rem;
+            color: #2c3e50;
+            margin-bottom: 30px;
+        }
+
+        .submit {
+            padding: 14px 32px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            background: #ffffff;
+            color: #92A8D1;
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* PERBAIKAN POPUP CONTAINER */
+        .popup-container {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            z-index: 10;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            
+            /* Agar bisa scroll jika konten kepanjangan */
+            overflow-y: auto; 
+            padding: 40px 0; /* Jarak aman atas bawah agar tidak mepet */
+            display: none; 
+            justify-content: center;
+            align-items: center; 
+        }
+
+        .popup-container.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .popup-box {
+            background: white;
+            padding: 35px;
+            max-width: 450px;
+            width: 90%;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+            margin: auto; /* Memastikan posisi di tengah saat dalam mode scroll */
+        }
+
+        .popup-box h2 {
+            font-size: 1.5rem;
+            color: #92A8D1;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .popup-box p {
+            line-height: 1.7;
+            font-size: 0.95rem;
+            color: #4f5b66;
+            text-align: justify;
+        }
+
+        .signature {
+            display: block;
+            margin-top: 25px;
+            font-weight: 600;
+            color: #92A8D1;
+            text-align: right;
+        }
+
+        .close-btn {
+            margin-top: 25px;
+            padding: 10px 40px;
+            cursor: pointer;
+            border: none;
+            background: #92A8D1;
+            color: white;
+            font-weight: 600;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="main-content" id="mainContent">
+        <h1 class="title">Halooo Kak Tomo..</h1>
+        <button class="submit">Lihat Pesan</button>
+    </div>
+
+    <div class="popup-container" id="popup">
+        <div class="popup-box">
+            <h2>Bonjourrrr</h2>
+            <p>
+                Allo kak tomooo, jujur aku lagi bingung, kamu pernah ngomong klo seneng aku ada inisiatif ngajak tapi sepertinya skrg engga ya.. 
+                Aku pernah ngajak temenin di weekday ga bisa, nyoba ngajak main tapi kamu bilang lagi capek.. Aku juga ngerasa keknya minggu lalu km nyebut staycation kek sengaja,
+                pdhl km tau aku ga suka.. (maap klo kesannya nuduh, aku ovt)
+                <br>
+                Aku bukan tipe yg mau nebak atau bersaing buat dapet perhatian, klo kamu udh ga interest sama aku, udh ilfil sama aku atau 
+                lagi lebih fokus ke hal lain, gapapa banget... tapi ngomong plizzzz..
+                <br>
+                Aku bukan mau ngilang kok cuma ngetik ini luapin apa yg aku pikirin.. makasyiiii ♡
+                <span class="signature">- Annisa -</span>
+            </p>
+            <button class="close-btn">close</button>
+        </div>
+    </div>
+
+    <script>
+        const submitButton = document.querySelector(".submit");
+        const popupContainer = document.getElementById("popup");
+        const closeButton = document.querySelector(".close-btn");
+        const mainContent = document.getElementById("mainContent");
+
+        submitButton.addEventListener("click", function () {
+            popupContainer.classList.add("active");
+            mainContent.style.filter = "blur(4px)";
+        });
+
+        closeButton.addEventListener("click", function () {
+            popupContainer.classList.remove("active");
+            mainContent.style.filter = "none";
+        });
+
+        popupContainer.addEventListener("click", function (e) {
+            if (e.target === popupContainer) {
+                popupContainer.classList.remove("active");
+                mainContent.style.filter = "none";
+            }
+        });
+    </script>
+</body>
+</html>
